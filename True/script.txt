@@ -1,0 +1,33 @@
+create database today05_04_2020;
+use today05_04_2020;
+
+create table MenuItem(
+      itemid bigint not null,
+      name varchar(50) not null,
+      price float not null,
+      active boolean not null,
+      dateoflaunch date not null,
+      category varchar(50) not null,
+      freedelivery boolean not null
+);
+
+create table User(
+   	userid int not null,
+	itemid bigint not null
+);
+
+insert into menuitem values(1,'Sandwich',99.00,true,"2017-03-15",'Main Course',true);
+insert into menuitem values(2,'Burger',129.00,true,"2017-12-23",'Main Course',false);
+insert into menuitem values(3,'Pizza',149.00,true,"2017-08-21",'Main Course',false);
+insert into menuitem values(4,'French Fries',57.00,false,"2017-07-02",'Starters',true);
+insert into menuitem values(5,'Choclate Brownie',32.00,true,"2022-01-02",'Desert',true);
+
+select * from MenuItem;
+select * from user;
+
+SELECT * FROM MenuItem WHERE itemid in (select itemid from user where userid = 2);
+
+drop table user;
+drop table MenuItem;
+
+truncate table user;
